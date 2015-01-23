@@ -21,7 +21,7 @@
 
 
 <body style="width:100%;height:100%;">
- <div class="center" id="counter" style="font-family:arial;font-size:30px;width:100%;">
+ <div class="center" id="counter" style="font-family:arial;font-size:40px;width:100%;">
  	0
  </div>
 
@@ -30,6 +30,7 @@
 hostIP = "";
 	$(document).ready( function() {
 		hostIP = myip;
+    getClicks();
 	});
 
 function getRandomColor() {
@@ -40,9 +41,12 @@ function getRandomColor() {
     }
     return color;
 }
-      var myDataRef = new Firebase('https://clicknation.firebaseio.com/');
+      var myDataRef = new Firebase('https://clicknation.firebaseio.com/clicks');
       $('html').click(function(e) {
-   		myDataRef.push({ip: hostIP});
+        myDataRef.transaction(function(currentClicks) {
+          return currentClicks+1;
+        });
+   		// myDataRef.push({ip: hostIP});
    		// alert("aadsads");
    		$('body').css("background-color", getRandomColor());
    		getClicks();
@@ -51,11 +55,12 @@ function getRandomColor() {
 
 function getClicks(){
 	  	myDataRef.on('value', function(snapshot) {
-   		var count = 0;
-   		snapshot.forEach(function() {
-       		count++;
-   			});
-   		 $('#counter').text(count);
+   		// var count = 0;
+   		// snapshot.forEach(function() {
+     //   		count++;
+   		// 	});
+   		 $('#counter').text(snapshot.val());
+       $('body').css("background-color", getRandomColor());
 		});
 
 	  }
