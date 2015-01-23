@@ -15,6 +15,7 @@
 
 	<script src='https://cdn.firebase.com/js/client/2.0.4/firebase.js'></script>
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+    <script type="text/javascript" src="http://l2.io/ip.js?var=myip"></script>
 
 </head>
 
@@ -28,6 +29,7 @@
 </body>
 
 
+<<<<<<< HEAD
 
 <script>
 
@@ -56,33 +58,25 @@ function getRandomColor() {
         );
    		// alert("aadsads");
 
+=======
+<script>
+	hostIP = "";
+	$(document).ready( function() {
+		hostIP = myip;
+	});
+     var myDataRef = new Firebase('https://clicknation.firebaseio.com/');
+      $('body').click(function(e) {
+   		myDataRef.push({ip: hostIP});
+>>>>>>> FETCH_HEAD
 	  });
-	  table.on('value', function(snapshot) {
-   var count = 0;
-   snapshot.forEach(function() {
-       count++;
-   });
-   //count is now safe to use.
-});
-
-      // $('#messageInput').keypress(function (e) {
-      //   if (e.keyCode == 13) {
-      //     var name = $('#nameInput').val();
-      //     var text = $('#messageInput').val();
-      //     myDataRef.push({name: name, text: text});
-      //     $('#messageInput').val('');
-      //   }
-      // });
-      // myDataRef.on('child_added', function(snapshot) {
-      //   var message = snapshot.val();
-      //   displayChatMessage(message.name, message.text);
-      // });
-      // function displayChatMessage(name, text) {
-      //   $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
-      //   $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
-      // };
-    </script>
-
-
+	 function getClicks(){
+	  	myDataRef.on('value', function(snapshot) {
+   		var count = 0;
+   		snapshot.forEach(function() {
+       		count++;
+   			});
+		});
+	  }
+</script>
 </body>
 </html>
