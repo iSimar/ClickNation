@@ -3,6 +3,7 @@
 <html lang="en" style="width:100%;height:100%;">
 
 <head>
+	<audio id="audiotag1" src="http://puu.sh/f6vKd/4f9a6ea08d.mp3" preload="auto"></audio>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE-edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -66,11 +67,13 @@ function getClicks(){
 	  }
 
 myDataRef.on('child_added', function(snapshot) {
+	play_single_sound();
 	getClicks();
-	snd = new Audio('http://puu.sh/f6vKd/4f9a6ea08d.mp3');
-	snd.play();
 });
 
+function play_single_sound() {
+		document.getElementById('audiotag1').play();
+	}
     </script>
 
 <style>
