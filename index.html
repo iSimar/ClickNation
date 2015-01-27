@@ -3,7 +3,6 @@
 <html lang="en" style="width:100%;height:100%;">
 
 <head>
-	<audio id="audiotag1" src="http://puu.sh/f6vKd/4f9a6ea08d.mp3" preload="auto"></audio>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE-edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,7 +15,7 @@
 
 	<script src='https://cdn.firebase.com/js/client/2.0.4/firebase.js'></script>
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
-    <script type="text/javascript" src="http://l2.io/ip.js?var=myip"></script>
+    <script src='howler.js/howler.js'> </script>
 
 </head>
 
@@ -60,14 +59,9 @@ function getClicks(){
 		first=false;
 	}
 	else{
-		var vid = document.getElementById("audiotag1");
-		vid.play();
+		new Howl({urls: ['http://puu.sh/f6vKd/4f9a6ea08d.mp3']}).play();
 	}
 	  	myDataRef.on('value', function(snapshot) {
-   		// var count = 0;
-   		// snapshot.forEach(function() {
-     //   		count++;
-   		// 	});
    		 $('#counter').text(snapshot.val());
        $('body').css("background-color", getRandomColor());
 		});
