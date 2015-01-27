@@ -28,12 +28,9 @@
 
 
 <script>
-function play_single_sound() {
-	var vid = document.getElementById("audiotag1");
-	vid.play();
-	}
 hostIP = "";
 	$(document).ready( function() {
+		var vid = document.getElementById("audiotag1");
 		hostIP = myip;
     getClicks();
 	});
@@ -59,6 +56,7 @@ function getRandomColor() {
 
 
 function getClicks(){
+		vid.play();
 	  	myDataRef.on('value', function(snapshot) {
    		// var count = 0;
    		// snapshot.forEach(function() {
@@ -71,7 +69,6 @@ function getClicks(){
 	  }
 
 myDataRef.on('child_added', function(snapshot) {
-	play_single_sound();
 	getClicks();
 });
     </script>
