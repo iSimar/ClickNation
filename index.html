@@ -28,6 +28,10 @@
 
 
 <script>
+function play_single_sound() {
+	var vid = document.getElementById("audiotag1");
+	vid.play();
+	}
 hostIP = "";
 	$(document).ready( function() {
 		hostIP = myip;
@@ -70,11 +74,6 @@ myDataRef.on('child_added', function(snapshot) {
 	play_single_sound();
 	getClicks();
 });
-
-function play_single_sound() {
-	var vid = document.getElementById("audiotag1");
-	vid.play();
-	}
     </script>
 
 <style>
