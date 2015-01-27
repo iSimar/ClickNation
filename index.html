@@ -55,8 +55,6 @@ function getRandomColor() {
 
 
 function getClicks(){
-	var vid = document.getElementById("audiotag1");
-		vid.play();
 	  	myDataRef.on('value', function(snapshot) {
    		// var count = 0;
    		// snapshot.forEach(function() {
@@ -69,6 +67,8 @@ function getClicks(){
 	  }
 
 myDataRef.on('child_added', function(snapshot) {
+	var vid = document.getElementById("audiotag1");
+		vid.play();
 	getClicks();
 });
     </script>
