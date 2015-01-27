@@ -28,10 +28,8 @@
 
 
 <script>
-var vid = document.getElementById("audiotag1");
 hostIP = "";
 	$(document).ready( function() {
-		var vid = document.getElementById("audiotag1");
 		hostIP = myip;
     getClicks();
 	});
@@ -57,6 +55,7 @@ function getRandomColor() {
 
 
 function getClicks(){
+	var vid = document.getElementById("audiotag1");
 		vid.play();
 	  	myDataRef.on('value', function(snapshot) {
    		// var count = 0;
