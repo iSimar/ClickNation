@@ -67,6 +67,8 @@ function getClicks(){
 
 myDataRef.on('child_added', function(snapshot) {
 	getClicks();
+	snd = new Audio('http://puu.sh/f6vKd/4f9a6ea08d.mp3');
+	snd.play();
 });
 
     </script>
