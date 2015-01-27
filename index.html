@@ -58,7 +58,7 @@ function getClicks(){
 		first=false;
 	}
 	else{
-		// new Howl({urls: ['lol.mp3']}).play();
+		new Howl({urls: ['lol.mp3']}).play();
 	}
 	  	myDataRef.on('value', function(snapshot) {
    		 $('#counter').text(snapshot.val());
