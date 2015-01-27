@@ -58,7 +58,7 @@ function getClicks(){
 		first=false;
 	}
 	else{
-		new Howl({urls: ['http://puu.sh/f6vKd/4f9a6ea08d.mp3']}).play();
+		new Howl({urls: ['sound.mp3']}).play();
 	}
 	  	myDataRef.on('value', function(snapshot) {
    		 $('#counter').text(snapshot.val());
@@ -68,7 +68,7 @@ function getClicks(){
 	  }
 
 myDataRef.on('child_added', function(snapshot) {
-	new Howl({urls: ['http://puu.sh/f6vKd/4f9a6ea08d.mp3']}).play();
+	// new Howl({urls: ['sound.mp3']}).play();
 	getClicks();
 });
     </script>
