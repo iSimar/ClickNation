@@ -33,11 +33,8 @@
 
 
 <script>
-var first = true;
-hostIP = "";
-	$(document).ready( function() {
-    getClicks();
-	});
+var myDataRef = new Firebase('https://clicknation.firebaseio.com/clicks');
+var howl = new Howl({urls: ['lol.mp3']});
 
 function getRandomColor() {
     var letters = '0123456789ABCDEF'.split('');
@@ -47,35 +44,25 @@ function getRandomColor() {
     }
     return color;
 }
-      var myDataRef = new Firebase('https://clicknation.firebaseio.com/clicks');
-      $('html').click(function(e) {
-        myDataRef.transaction(function(currentClicks) {
-          return currentClicks+1;
-        });
-   		// myDataRef.push({ip: hostIP});
-   		// alert("aadsads");
-   		$('body').css("background-color", getRandomColor());
-   		getClicks();
-	  });
 
+function incrementCounter() {
+    myDataRef.transaction(function(currentClicks) {
+        return ++currentClicks;
+    });
+}
 
-function getClicks(){
-	if(first){
-		first=false;
-	}
-	else{
-		new Howl({urls: ['lol.mp3']}).play();
-	}
-	  	myDataRef.on('value', function(snapshot) {
-   		 $('#counter').text(snapshot.val());
-       $('body').css("background-color", getRandomColor());
-		});
+myDataRef.on('value', function(snapshot) {
+    howl.play();
+    $('#counter').text(snapshot.val());
+    $('body').css("background-color", getRandomColor());
+});
 
-	  }
+$('html').click(function() {
+    incrementCounter();
+});
 
-myDataRef.on('child_added', function(snapshot) {
-	new Howl({urls: ['lol.mp3']}).play();
-	getClicks();
+$(document).ready(function() {
+    incrementCounter();
 });
     </script>
 
