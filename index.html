@@ -33,7 +33,37 @@
 
 
 <script>
-eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--){d[e(c)]=k[c]||e(c)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('3 8=t;w="";$(x).C(2(){5()});2 9(){3 c=\'D\'.z(\'\');3 4=\'#\';y(3 i=0;i<6;i++){4+=c[d.B(d.s()*r)]}h 4}3 7=a u(\'v://A.E.G/N\');$(\'M\').O(2(e){7.Q(2(j){h j+1});$(\'f\').g("n-4",9());5()});2 5(){K(8){8=J}R{a o({k:[\'m.l\']}).p()}7.q(\'H\',2(b){$(\'#F\').L(b.P());$(\'f\').g("n-4",9())})}7.q(\'I\',2(b){a o({k:[\'m.l\']}).p();5()});',54,54,'||function|var|color|getClicks||myDataRef|first|getRandomColor|new|snapshot|letters|Math||body|css|return||currentClicks|urls|mp3|lol|background|Howl|play|on|16|random|true|Firebase|https|hostIP|document|for|split|clicknation|floor|ready|0123456789ABCDEF|firebaseio|counter|com|value|child_added|false|if|text|html|clicks|click|val|transaction|else'.split('|'),0,{}))
+var myDataRef = new Firebase('https://clicknation.firebaseio.com/clicks');
+var howl = new Howl({urls: ['lol.mp3']});
+
+function getRandomColor() {
+    var letters = '0123456789ABCDEF'.split('');
+    var color = '#';
+    for (var i = 0; i < 6; i++ ) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+function incrementCounter() {
+    myDataRef.transaction(function(currentClicks) {
+        return ++currentClicks;
+    });
+}
+
+myDataRef.on('value', function(snapshot) {
+    howl.play();
+    $('#counter').text(snapshot.val());
+    $('body').css("background-color", getRandomColor());
+});
+
+$('html').click(function() {
+    incrementCounter();
+});
+
+$(document).ready(function() {
+    incrementCounter();
+});
     </script>
 
 <style>
