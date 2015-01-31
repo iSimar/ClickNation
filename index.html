@@ -60,7 +60,7 @@ function getClicks(){
 
 	  }
 
-myDataRef.on('child_added', function(snapshot) {
+myDataRef.on('value', function(snapshot) {
 	getClicks();
 });
 
